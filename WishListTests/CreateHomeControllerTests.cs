@@ -38,7 +38,7 @@ namespace WishListTests
             var controller = Activator.CreateInstance(controllerType);
             var method = controllerType.GetMethod("Index");
             Assert.True(method != null, "`HomeController` was found, but does not appear to contain a `public` `Index` action.");
-            //Assert.True(method.ReturnType == typeof(IActionResult), "`HomeController.Index` was found, but did not have a return type of `IActionResult`.");
+            Assert.True(method.ReturnType == typeof(IActionResult), "`HomeController.Index` was found, but did not have a return type of `IActionResult`.");
 
             var result = (ViewResult)method.Invoke(controller, null);
             Assert.True(result.ViewName == "Index", "`HomeController.Index` did not explicitly return the `Index` view.");
